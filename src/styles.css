@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css?family=Pacifico|Roboto");
+
+html {
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+}
+
+body {
+  background-color: #edf4ed;
+  color: #183059;
+  padding: 0.5em 1.5em;
+}
+
+h1 {
+  color: #cf5c36;
+  font-family: Pacifico;
+  font-weight: normal;
+}
