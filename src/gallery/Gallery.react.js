@@ -71,6 +71,26 @@ class Gallery extends React.Component {
     };
   };
 
+  renderGallary = () => {
+    const { photos, liked } = this.state;
+    return (
+      <div className="gallery">
+        {photos.map((photo, idx) => (
+          <div
+            key={idx}
+            className="gallery-item"
+            onDoubleClick={this.handleLike(photo.id)}
+          >
+            <img src={photo.url ? photo.url : photo.image.url} alt="" />
+            <div id="liked">
+              {liked.has(photo.id) || liked.has(photo.image_id) ? "❤" : ""}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   renderTypeSelect = () => {
     const { imageType } = this.state;
     return (
@@ -78,9 +98,9 @@ class Gallery extends React.Component {
         <label>
           Image Types:
           <select value={imageType} onChange={this.handleTypeSelection}>
-            {TYPES.map((type) => {
+            {TYPES.map((type, idx) => {
               return (
-                <option value={type}>
+                <option key={idx} value={type}>
                   {type === "gif,jpg,png" ? "All Types" : type}
                 </option>
               );
@@ -110,25 +130,11 @@ class Gallery extends React.Component {
   };
 
   render = () => {
-    const { photos, liked } = this.state;
     return (
       <div className="gallery-container">
         {this.renderTypeSelect()}
         {this.renderPagination()}
-        <div className="gallery">
-          {photos.map((photo, idx) => (
-            <div
-              key={idx}
-              className="gallery-item"
-              onDoubleClick={this.handleLike(photo.id)}
-            >
-              <img src={photo.url ? photo.url : photo.image.url} alt="" />
-              <div id="liked">
-                {liked.has(photo.id) || liked.has(photo.image_id) ? "❤" : ""}
-              </div>
-            </div>
-          ))}
-        </div>
+        {this.renderGallary()}
       </div>
     );
   };
