@@ -1,6 +1,6 @@
 const apiKey = "161624c6-8991-4c93-b778-5c689d3262cb";
 const headers = { "x-api-key": apiKey };
-const userId = "FirstInitialAndLastName";
+const userId = "MAhmed";
 
 /**
  * Returns a promise which resolves with an array of image objects.
